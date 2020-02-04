@@ -1,9 +1,13 @@
 import argparse
+import logging
 import os
 from uuid import uuid4
 
 import yaml
 from graphviz import Digraph
+
+
+logger = logging.getLogger(__name__)
 
 
 class Block:
@@ -60,7 +64,7 @@ def load(root, data, filepath):
                     data = yaml.load(f, Loader=yaml.FullLoader)
                     load(root, data, fpath)
             else:
-                print("warn " + fpath + " does not exist.")
+                logger.warning(fpath + " does not exist")
         if not key.startswith("+"):
             continue
         block = root.append(key)
