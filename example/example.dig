@@ -1,0 +1,15 @@
++example:
+  +greet:
+    echo>: hello
+
+  +greet-again:
+    echo>: hello
+
++call-sub:
+  _parallel: true
+
+  +call-sub1:
+    call>: sub1
+
+  +call-sub2:
+    call>: sub2
