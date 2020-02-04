@@ -10,7 +10,7 @@ digdag-graph is a simple digdag workflow visualization tool.
 pip install -r requirements.txt
 ```
 
-## Example usage
+## Usage example
 
 This command generates `out` (graphfviz dot file) and rendered image `out.png` .
 
