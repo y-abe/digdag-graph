@@ -1,7 +1,9 @@
-import yaml
+import argparse
 import os
-from graphviz import Digraph
 from uuid import uuid4
+
+import yaml
+from graphviz import Digraph
 
 
 class Block:
@@ -66,7 +68,12 @@ def load(root, data, filepath):
 
 
 def main():
-    filepath = os.getcwd() + '/hoge.dig'
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument('input')
+    argparser.add_argument('output')
+    args = argparser.parse_args()
+
+    filepath = os.getcwd() + '/' + args.input
 
     dot = Digraph(format='png')
     root = Block('root', 'root')
@@ -76,9 +83,8 @@ def main():
         load(root, data, filepath)
 
     root.draw(dot)
-    dot.render('out')
+    dot.render(args.output)
 
 
 if __name__ == '__main__':
     main()
-
