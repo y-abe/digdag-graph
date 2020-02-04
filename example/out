@@ -1,0 +1,37 @@
+digraph {
+	"392fe257-b16d-418c-9dc4-8f5c9373d988" [label=root]
+	"392fe257-b16d-418c-9dc4-8f5c9373d988" -> "1f86623c-7c45-4dfc-9516-2df2bb564f41"
+	"0b6ba326-e6b1-4e6f-bbfd-39184a9d70f4" -> "d8eaab28-5f48-4aa6-95ae-ca08ebddbc85"
+	subgraph "cluster-e694a572-c75e-457f-92c5-18a08f7b19ba" {
+		"1f86623c-7c45-4dfc-9516-2df2bb564f41" [label="+example"]
+		"1f86623c-7c45-4dfc-9516-2df2bb564f41" -> "57b836eb-528b-48b3-bc45-1431d5602ee6"
+		"57b836eb-528b-48b3-bc45-1431d5602ee6" -> "0b6ba326-e6b1-4e6f-bbfd-39184a9d70f4"
+		subgraph "cluster-2e0634d1-e4db-437f-81c9-395e9c41e258" {
+			"57b836eb-528b-48b3-bc45-1431d5602ee6" [label="+greet"]
+			subgraph "cluster-013c2777-6e0e-49ce-b4fd-c69b4f5366e5" {
+			}
+			"0b6ba326-e6b1-4e6f-bbfd-39184a9d70f4" [label="+greet-again"]
+			subgraph "cluster-ce339345-f4a6-4c6c-9aee-c3ce7b0b96a9" {
+			}
+		}
+		"d8eaab28-5f48-4aa6-95ae-ca08ebddbc85" [label="+call-sub"]
+		"d8eaab28-5f48-4aa6-95ae-ca08ebddbc85" -> "3bcb3fa9-dc0c-43b0-a5a8-954820439aa0"
+		"d8eaab28-5f48-4aa6-95ae-ca08ebddbc85" -> "3ce4e6a3-afcc-4eaa-809f-029aba5af7a8"
+		subgraph "cluster-8604777f-008b-449e-8d08-65d48480c8a3" {
+			"3bcb3fa9-dc0c-43b0-a5a8-954820439aa0" [label="+call-sub1"]
+			"3bcb3fa9-dc0c-43b0-a5a8-954820439aa0" -> "e28b9fc1-f9c6-4268-8bf3-b42e5215ad3f"
+			subgraph "cluster-4649bb67-cafa-45ac-abde-c31be461577f" {
+				"e28b9fc1-f9c6-4268-8bf3-b42e5215ad3f" [label="+notify"]
+				subgraph "cluster-90e764c6-6cc7-436c-a580-dfdbd50286b1" {
+				}
+			}
+			"3ce4e6a3-afcc-4eaa-809f-029aba5af7a8" [label="+call-sub2"]
+			"3ce4e6a3-afcc-4eaa-809f-029aba5af7a8" -> "9d57d243-4063-4db5-8f6c-32cbe2214180"
+			subgraph "cluster-8388042c-1c14-4c59-bdb4-1f2cbaa1b29c" {
+				"9d57d243-4063-4db5-8f6c-32cbe2214180" [label="+notify"]
+				subgraph "cluster-0941f44d-e436-42ec-8015-0a40d32fd5ef" {
+				}
+			}
+		}
+	}
+}
