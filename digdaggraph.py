@@ -13,15 +13,15 @@ class Block:
         self.label = label
 
         self.subblocks = []
-        self.subgraph_name = 'cluster-' + str(uuid4())
+        self.subgraph_name = "cluster-" + str(uuid4())
 
         self.parallel = False
-    
+
     def append(self, label):
         block = Block(self.subgraph_name, label)
         self.subblocks.append(block)
         return block
-    
+
     def last(self):
         if self.subblocks:
             if self.parallel:
@@ -46,22 +46,22 @@ class Block:
 
 
 def load(root, data, filepath):
-    dirpath = '/'.join(filepath.split('/')[:-1]) + '/'
+    dirpath = "/".join(filepath.split("/")[:-1]) + "/"
 
     for key in data.keys():
-        if key == '_parallel':
+        if key == "_parallel":
             root.parallel = data[key]
-        if key == 'call>':
+        if key == "call>":
             fpath = dirpath + data[key]
-            if not fpath.endswith('.dig'):
-                fpath += '.dig'
+            if not fpath.endswith(".dig"):
+                fpath += ".dig"
             if os.path.exists(fpath):
                 with open(fpath) as f:
                     data = yaml.load(f, Loader=yaml.FullLoader)
                     load(root, data, fpath)
             else:
-                print('warn ' + fpath + ' does not exist.')
-        if not key.startswith('+'):
+                print("warn " + fpath + " does not exist.")
+        if not key.startswith("+"):
             continue
         block = root.append(key)
         load(block, data[key], filepath)
@@ -69,14 +69,14 @@ def load(root, data, filepath):
 
 def main():
     argparser = argparse.ArgumentParser()
-    argparser.add_argument('input')
-    argparser.add_argument('output')
+    argparser.add_argument("input")
+    argparser.add_argument("output")
     args = argparser.parse_args()
 
-    filepath = os.getcwd() + '/' + args.input
+    filepath = os.getcwd() + "/" + args.input
 
-    dot = Digraph(format='png')
-    root = Block('root', 'root')
+    dot = Digraph(format="png")
+    root = Block("root", "root")
 
     with open(filepath) as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
@@ -86,5 +86,5 @@ def main():
     dot.render(args.output)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
