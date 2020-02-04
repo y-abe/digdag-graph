@@ -73,8 +73,8 @@ def load(root, data, filepath):
 
 def main():
     argparser = argparse.ArgumentParser()
-    argparser.add_argument("input")
-    argparser.add_argument("output")
+    argparser.add_argument("input", help="input dig file")
+    argparser.add_argument("output", help="output dot file")
     args = argparser.parse_args()
 
     filepath = os.getcwd() + "/" + args.input
