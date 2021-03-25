@@ -1,2 +1,2 @@
 graphviz==0.13.2
-PyYAML==5.3
+PyYAML==5.4
